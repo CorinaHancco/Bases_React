@@ -1,25 +1,40 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Producto from './Producto'; // Importamos nuestra pieza de LEGO
+import Header from './Header';
 
 function App() {
-  // Definimos un "estado" llamado cuenta que empieza en 0
-  const [cuenta, setCuenta] = useState(0);
+  const [inventario] = useState([
+    { id: 101, nombre: "Laptop Dell", precio: 3500 },
+    { id: 102, nombre: "Mouse Pad", precio: 45 },
+    { id: 103, nombre: "Monitor curvo", precio: 1200 },
+    { id: 104, nombre: "Teclado Mecánico", precio: 80 },
+    { id: 105, nombre: "Mouse Pad", precio: 45 },
+    { id: 106, nombre: "Monitor curvo", precio: 1200 },
+    { id: 107, nombre: "Teclado Mecánico", precio: 80 },
+    { id: 108, nombre: "Mouse Pad", precio: 45 },
+    { id: 109, nombre: "Monitor curvo", precio: 1200 },
+    { id: 110, nombre: "Teclado Mecánico", precio: 80 },
+  ]);
 
+  const manejarCompra = (nombre) => {
+    alert(`Has seleccionado: ${nombre} para el inventario de San Gabán.`);
+  };
+
+  const titulo = "Sistema de Gestión de Activos";
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px', color: 'blue' }}>
-      <h1>Mi primer contador en React</h1>
-      <p>Has hecho clic {cuenta} veces</p>
+    <div style={{ fontFamily: 'Arial', padding: '40px' }}>
+      <Header titulo={titulo} />
 
-      <button onClick={() => setCuenta(cuenta + 1)}>
-        Aumentar
-      </button>
-
-      <button onClick={() => setCuenta(cuenta - 1)}>
-        Disminuir
-      </button>
-
-      <button onClick={() => setCuenta(0)}>
-        Reiniciar
-      </button>
+      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+        {inventario.map((item) => (
+          <Producto
+            key={item.id}
+            nombre={item.nombre}
+            precio={item.precio}
+            alComprar={() => manejarCompra(item.nombre)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
