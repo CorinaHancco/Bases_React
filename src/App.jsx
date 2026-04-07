@@ -1,39 +1,34 @@
-import { useState } from 'react';
-import Producto from './Producto'; // Importamos nuestra pieza de LEGO
-import Header from './Header';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Usuarios from './pages/Usuarios';
+import Productos from './pages/Productos';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import Pokemons from './pages/Pokemons';
 
 function App() {
-  const [inventario] = useState([
-    { id: 101, nombre: "Laptop Dell", precio: 3500 },
-    { id: 102, nombre: "Mouse Pad", precio: 45 },
-    { id: 103, nombre: "Monitor curvo", precio: 1200 },
-    { id: 104, nombre: "Teclado Mecánico", precio: 80 },
-    { id: 105, nombre: "Mouse Pad", precio: 45 },
-    { id: 106, nombre: "Monitor curvo", precio: 1200 },
-    { id: 107, nombre: "Teclado Mecánico", precio: 80 },
-    { id: 108, nombre: "Mouse Pad", precio: 45 },
-    { id: 109, nombre: "Monitor curvo", precio: 1200 },
-    { id: 110, nombre: "Teclado Mecánico", precio: 80 },
-  ]);
+  const location = useLocation();
+  let tituloHeader = "Bienvenida al Panel de Control";
 
-  const manejarCompra = (nombre) => {
-    alert(`Has seleccionado: ${nombre} para el inventario de San Gabán.`);
-  };
+  if (location.pathname === "/usuarios") tituloHeader = "👥 Directorio de Personal";
+  if (location.pathname === "/productos") tituloHeader = "📦 Inventario de Software";
+  if (location.pathname === "/pokemons") tituloHeader = "👻 Pokemons";
 
-  const titulo = "Sistema de Gestión de Activos";
   return (
-    <div style={{ fontFamily: 'Arial', padding: '40px' }}>
-      <Header titulo={titulo} />
+    <div style={{ display: 'flex', minHeight: '100vh', margin: 0, padding: 0 }}>
+      <Sidebar />
 
-      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-        {inventario.map((item) => (
-          <Producto
-            key={item.id}
-            nombre={item.nombre}
-            precio={item.precio}
-            alComprar={() => manejarCompra(item.nombre)}
-          />
-        ))}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+
+        <Header titulo={tituloHeader} />
+
+        <main style={{ padding: '20px' }}>
+          <Routes>
+            <Route path="/" element={<div><h2>Selecciona una opción del menú izquierdo.</h2></div>} />
+            <Route path="/usuarios" element={<Usuarios />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/pokemons" element={<Pokemons />} />
+          </Routes>
+        </main>
       </div>
     </div>
   );
