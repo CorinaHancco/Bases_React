@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Pokemons() {
     const [lista, setLista] = useState([]);
@@ -8,19 +9,21 @@ function Pokemons() {
         fetch('https://pokeapi.co/api/v2/pokemon')
             .then(res => res.json())
             .then(data => {
-                // PokeAPI devuelve los datos dentro de un arreglo llamado "results"
                 setLista(data.results);
             });
     }, []);
 
     return (
         <div style={{ padding: '20px' }}>
-            <ul>
+            <ul style={{ listStyleType: 'none', padding: 0 }}>
                 {lista.map(pokemon => (
-                    // Usamos el nombre como clave porque la URL inicial no nos trae IDs
-                    <li key={pokemon.name}>
-                        <strong>{pokemon.name}</strong> 
-                        <br/><small>Ruta: {pokemon.url}</small>
+                    <li key={pokemon.name} style={{ margin: '15px 0' }}>
+                        <Link 
+                           to={`/pokemons/${pokemon.name}`} 
+                           style={{ textDecoration: 'none', color: '#005a8d', fontSize: '18px', fontWeight: 'bold' }}
+                        >
+                           🔍 Ver perfil de {pokemon.name}
+                        </Link>
                     </li>
                 ))}
             </ul>

@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 function Sidebar() {
     return (
         <aside style={sidebarStyle}>
-          <h2>Menú</h2>
+            <h2>Menú</h2>
             <ul style={listStyle}>
                 <li><Link to="/" style={linkStyle}>🏠 Inicio</Link></li>
                 <li><Link to="/usuarios" style={linkStyle}>👥 Usuarios</Link></li>
                 <li><Link to="/productos" style={linkStyle}>📦 Productos</Link></li>
                 <li><Link to="/pokemons" style={linkStyle}>👻 Pokemon</Link></li>
+                <li><Link to="/rickandmorty" style={linkStyle}>🙉 Rick and Morty</Link></li>
             </ul>
         </aside>
     );
