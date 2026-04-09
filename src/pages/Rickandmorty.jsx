@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Rickandmorty() {
     const [personajes, setPersonajes] = useState([]);
@@ -30,9 +31,9 @@ function Rickandmorty() {
                         <p style={{ margin: '0 0 15px 0', color: '#666', fontSize: '15px' }}>
                             <strong>Estado:</strong> {personaje.status}
                         </p>
-                        <button style={btnStyle}>
+                        <Link to={`/rickandmorty/${personaje.id}`} style={btnStyle}>
                             Ver detalles del personaje
-                        </button>
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -76,7 +77,10 @@ const btnStyle = {
     cursor: 'pointer',
     fontWeight: 'bold',
     width: '100%',
-    marginTop: 'auto'
+    marginTop: 'auto',
+    textDecoration: 'none',
+    display: 'block',
+    boxSizing: 'border-box'
 };
 
 export default Rickandmorty;

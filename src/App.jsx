@@ -3,10 +3,11 @@ import Usuarios from './pages/Usuarios';
 import Productos from './pages/Productos';
 import Pokemons from './pages/Pokemons';
 import PokemonDetalle from './pages/PokemonDetalle';
+import Rickandmorty from './pages/rickandmorty';
+import RickandmortyDetalle from './pages/RickandmortyDetalle';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Rickandmorty from './pages/rickandmorty';
 
 function App() {
   const location = useLocation();
@@ -16,7 +17,8 @@ function App() {
   if (location.pathname === "/productos") tituloHeader = "📦 Inventario de Software";
   if (location.pathname === "/pokemons") tituloHeader = "👻 Pokemons";
   if (location.pathname.startsWith("/pokemons/")) tituloHeader = "🔍 Detalles del Pokémon";
-  if (location.pathname === "/rickandmorty") tituloHeader = "🙉 Detalles del Rick and Morty";
+  if (location.pathname === "/rickandmorty") tituloHeader = "🙉 Elenco de Rick and Morty";
+  if (location.pathname.startsWith("/rickandmorty/")) tituloHeader = "🛸 Expediente Extraterrestre";
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', margin: 0, padding: 0 }}>
@@ -34,6 +36,7 @@ function App() {
             <Route path="/pokemons" element={<Pokemons />} />
             <Route path="/pokemons/:nombre" element={<PokemonDetalle />} />
             <Route path="/rickandmorty" element={<Rickandmorty />} />
+            <Route path="/rickandmorty/:id" element={<RickandmortyDetalle />} />
           </Routes>
         </main>
         <Footer />
