@@ -1,4 +1,4 @@
-# ⚛️ React Inicio - Panel de Control & Consumo de APIs
+# ⚛️ React Bases - Panel de Control & Consumo de APIs
 
 Este es un proyecto de práctica y aprendizaje desarrollado con **React** y **Vite**. Funciona como un panel de control corporativo (Dashboard) e incluye integración con múltiples APIs públicas, mostrando distintos módulos de información navegables a través de una barra lateral interactiva.
 
