@@ -55,11 +55,8 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
+  width: 100%;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -112,30 +109,38 @@ code {
 
 /* --- FOOTER STYLES --- */
 .footer-style {
-  padding-top: 50px;
-  background-color: #2C3E50;
+  padding: 12px 30px;
+  background-color: #111827; /* Gris muy oscuro, casi negro, contrasta con el sidebar */
   color: white;
   width: 100%;
-}
-
-.footer-style h3 {
-  margin-bottom: 30px;
-  font-weight: 800;
-}
-
-.footer-col {
-  margin-bottom: 50px;
-}
-
-.list-inline {
-  list-style: none;
-  padding: 0;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 50px;
+  align-items: center;
+  font-size: 14px;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  box-sizing: border-box;
 }
 
-.btn-social {
+.footer-style p {
+  margin: 0;
+}
+
+.footer-style .redes {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-style .redes a {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-style .redes a:hover {
+  color: var(--accent);
 }

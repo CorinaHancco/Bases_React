@@ -28,7 +28,7 @@ function App() {
 
         <Header titulo={tituloHeader} />
 
-        <main style={{ padding: '20px' }}>
+        <main style={{ padding: '20px', flex: 1 }}>
           <Routes>
             <Route path="/" element={<div><h2>Selecciona una opción del menú izquierdo.</h2></div>} />
             <Route path="/usuarios" element={<Usuarios />} />
